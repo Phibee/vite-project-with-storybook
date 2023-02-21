@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import './button.css';
 
 interface ButtonProps {
@@ -22,6 +22,10 @@ interface ButtonProps {
    * Optional click handler
    */
   onClick?: () => void;
+  /**
+   * Optional react component inside button
+   */
+  children?: ReactNode;
 }
 
 /**
@@ -32,17 +36,23 @@ export const Button = ({
   size = 'medium',
   backgroundColor,
   label,
+  children,
   ...props
 }: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+  const mode = primary
+    ? 'storybook-button--primary'
+    : 'storybook-button--secondary';
   return (
     <button
       type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
+      className={['storybook-button', `storybook-button--${size}`, mode].join(
+        ' '
+      )}
       style={{ backgroundColor }}
       {...props}
     >
       {label}
+      {children}
     </button>
   );
 };

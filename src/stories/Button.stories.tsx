@@ -1,5 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ReactComponent as AccountSvg } from '../assets/account.svg';
 
 import { Button } from './Button';
 
@@ -38,4 +39,12 @@ export const Small = Template.bind({});
 Small.args = {
   size: 'small',
   label: 'Button',
+};
+
+export const WithIcon = Template.bind({});
+WithIcon.args = {
+  primary: true,
+  size: 'small',
+  label: 'Button',
+  children: <AccountSvg />,
 };
